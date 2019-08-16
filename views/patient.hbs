@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+      #main{
+          margin: 0 auto;
+          width:60%;
+          text-align: center;
+      }
+        #info,#manage,#dele,#dinfo{
+            display: none;
+        }
+        h3{
+            color:red;
+            font-weight: bold;
+        }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+<div id="main">
+<h1>WELCOME</h1>
+ <button id="a" class=" btn btn-outline-primary">Personal Info</button>
+ <button id="b" class=" btn btn-outline-primary">Manage Account</button>
+ <button id="c" class=" btn btn-outline-primary">Doctor Info</button>
+ <a role="button" class=" btn btn-outline-primary" href="/logout">Logout</a>
+ <button  id='del' class=" btn btn-outline-primary">Delete Account</button>
+ <div id="info">
+     <br><br><br>
+     <p>NAME : {{data.first}}&nbsp;{{data.last}}</p>
+     <p>SEX : {{data.sex}}</p>
+     <p>AADHAR NUMBER : {{data.aadhar}}</p>
+     <p>BLOOD GROUP : {{data.blood}}</p>
+     <p>USER ID : {{data.userId}}</p>
+     <p>PASSWORD : {{data.password}}</p>
+     <p>{{#if data.address}}ADDRESS:  {{data.address}} {{/if}}</p>
+     <p>{{#if data.phone}}PHONE NUMBER:  {{data.phone}} {{/if}}</p>
+     <p>{{#if data.allergy}}PAST ALLERGIES:  {{data.allergy}} {{/if}}</p>
+     <p>{{#if data.ill}}PAST ILLNESS:  {{data.ill}} {{/if}}</p>
+ </div>
+<div id="manage">
+    <form action="/manage" method="post">
+        <br><br>  <input placeholder="RESIDENTIAL ADDRESS" name="add">
+        <br><br>  <input type="number" placeholder="PHONE NUMBER(10 digits)" name="phone">
+        <br><br>  <input placeholder="ALLERGIES" name="allergy">
+        <br><br>  <input placeholder="PAST ILLNESS" name="ill">
+        <input name="userId" value="{{data.userId}}" type='hidden'>
+        <br><br><br><button class=" btn btn-outline-danger btn-lg" type="submit">MAKE CHANGES</button>
+    </form>
+</div>
+<div id="dele"><br><br>
+    <h3>ARE YOU SURE YOU WANT TO DELETE YOUR ACCOUNT?</h3><br>
+    <form action="/delete" method="post">
+        <input name="userId" value="{{data.userId}}" type="hidden">
+    <button id="yes" class=" btn btn-outline-danger" type="submit">YES</button>
+    </form><br>
+    <button id="no" class=" btn btn-outline-success">NO</button>
+</div>
+<div id="dinfo">
+    <p>{{#if doc.first}} NAME : {{doc.first}}{{/if}}  {{#if doc.last}} {{doc.last}}{{/if}}</p>
+    <p>{{#if doc.userId}}USER ID : {{doc.userId}} {{/if}}</p>
+    <p>{{#if doc.dept}}DEPARTMENT : {{doc.dept}} {{/if}}</p>
+    <p>{{#if doc.post}}POST : {{doc.post}} {{/if}}</p>
+    <p>{{#if doc.postgrad}}POST GRADUATION : {{doc.postgrad}} {{/if}}</p>
+    <p>{{#if doc.phone}} PHONE NUMBER : {{doc.phone}} {{/if}}</p>
+</div>
+</div>
+</body>
+</html>
+<script>
+
+var a = document.getElementById('a');
+var b = document.getElementById('b');
+var c = document.getElementById('c');
+var yes = document.getElementById('yes');
+var no = document.getElementById('no');
+var del = document.getElementById('del');
+var info=document.getElementById('info');
+var manage=document.getElementById('manage');
+var dele=document.getElementById('dele');
+var dinfo=document.getElementById('dinfo');
+
+a.addEventListener('click',function(){
+   info.style.display='block';
+   manage.style.display='none';
+    dinfo.style.display='none';
+    dele.style.display='none';
+})
+b.addEventListener('click',function(){
+    manage.style.display='block';
+    info.style.display='none';
+    dinfo.style.display='none';
+    dele.style.display='none';
+})
+del.addEventListener('click',function(){
+    manage.style.display='none';
+    info.style.display='none';
+    dele.style.display='block';
+    dinfo.style.display='none';
+})
+no.addEventListener('click',function(){
+    dele.style.display='none';
+})
+c.addEventListener('click',function(){
+    manage.style.display='none';
+    info.style.display='none';
+    dele.style.display='none';
+    dinfo.style.display='block';
+})
+
+</script>

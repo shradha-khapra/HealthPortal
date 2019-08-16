@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patients</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        body{
+            background-repeat:no-repeat;
+            background-size:100% auto;
+        }
+        #regbox,#logbox{
+            display: none;
+        }
+        input{
+            border:none;
+            border-bottom:2px solid red;
+            background:transparent;
+            font-weight: bolder;
+            text-decoration-color: black; text-align: center;
+        }
+        ::placeholder{
+            color:black;
+        }
+        div{
+            position:absolute; left:25%; top:5%;
+            width:50%; text-align: center;
+        }
+        .btn{
+            width: 170px;
+        }
+        span{
+            color:red;
+        }
+    </style>
+
+</head>
+<body background="https://i2.wp.com/www.goodmoneying.com/wp-content/uploads/2014/07/apollo-munich-optima-super.jpg?fit=948%2C632&ssl=1">
+<div>
+<button id="reg" class=" btn btn-outline-danger btn-lg">REGISTER</button>&nbsp;&nbsp;&nbsp;
+<button id="log" class=" btn btn-outline-danger btn-lg" >LOGIN</button>
+</div>
+<div id="regbox"  >
+   <h4>NEW?</h4>
+   <h4>Register Yourself and  User ID will be provided <span>*required</span></h4>
+    <br><br>
+    <form action="/register" method="post">
+    <input type="text" placeholder="FIRST NAME" name="first"><span>*</span>&nbsp;&nbsp;<input type="text" placeholder="LAST NAME" name="last"><span>*</span>
+   <!--<br><br>  <input type="date" placeholder="DATE OF BIRTH">-->
+   <br><br>  <input type="text" placeholder="M/F(case sensitive)" name="sex"><span>*</span>
+   <br><br>  <input type="number" placeholder="AADHAR NUMBER(unique 3 digits)" name="aadhar"><span>*</span>
+   <br><br>  <input type="text" placeholder="BLOOD GROUP" name="blood"><span>*</span>
+    <br><br> <input type="password" placeholder="SET PASSWORD" name="password"><span>*</span>
+        <br><br><br><button class=" btn btn-outline-danger btn-lg" type="submit">REGISTER</button>
+    </form>
+</div>
+<div id="logbox">
+    <form action="/login" method="post">
+    <input  placeholder="USER ID" name="username"><span>*</span>
+    <br><br><input type="password" placeholder="PASSWORD" name="password"><span>*</span>
+        <br><br><span>*required</span>
+        <br><br><br><button class=" btn btn-outline-danger btn-lg" type="submit" >LOGIN</button>
+    </form>
+</div>
+</body>
+<script>
+    var reg=document.getElementById("reg");
+    var log=document.getElementById("log");
+    var regbox=document.getElementById("regbox");
+    var logbox=document.getElementById('logbox');
+    reg.addEventListener('click',function(){
+        regbox.style.display="block";
+        reg.style.display="none";
+        log.style.display="none";
+    });
+    log.addEventListener('click',function(){
+        logbox.style.display="block";
+        reg.style.display="none";
+        log.style.display="none";
+    });
+</script>
+</html>
