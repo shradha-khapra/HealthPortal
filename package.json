@@ -20,7 +20,7 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "connect-flash": "^0.1.1",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "express-session": "^1.15.6",
     "hbs": "^4.0.1",
     "path": "^0.12.7"
